@@ -20,7 +20,7 @@ st.markdown("---")
 def load_data(file):
     try:
         if file.name.endswith('.csv'):
-            return pd.read_csv(file, sep=';', encoding='utf-8')
+            return pd.read_csv(file, sep=None, encoding='utf-8') 
         
         elif file.name.endswith(('.xlsx', '.xls')):
             return pd.read_excel(file, sep=';', encoding='utf-8')
@@ -48,6 +48,7 @@ def to_excel(df):
 @st.cache_data
 def to_csv(df):
     return df.to_csv(index=False).encode('utf-8')
+
 
 def get_image_download_link(fig, filename, text):
     
